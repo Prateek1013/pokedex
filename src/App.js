@@ -3,6 +3,7 @@ import { Row, Col } from 'antd';
 import SearchBar from './components/SearchBar';
 import Filter from './components/Filter';
 import Cards from './components/Cards';
+import Title from './components/Title';
 import Details from './components/Details';
 import { useEffect, useState } from 'react';
 function App() {
@@ -29,6 +30,7 @@ function App() {
 
   return (
     <>
+    <Title/>
       <div style={{ display: 'flex' }}>
         <SearchBar setpokemons={setpokemons} search={search} />
         <Filter alltypes={alltypes} setpokemons={setpokemons} />
