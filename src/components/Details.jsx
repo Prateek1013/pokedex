@@ -1,17 +1,35 @@
 import { Modal } from "antd";
-const Details = () => {
-    const [modal2Open, setModal2Open] = useState(false);
+import { useEffect, useState } from "react";
+const Details = (props) => {
+    const {modalopen,setmodalopen,details}=props;
+    const [stats,setstats]=useState([]);
+    useEffect(()=>{
+        fetch(`${details.url}`).then(res=>res.json())
+        .then(jsondata=>{
+            var raw=jsondata.stats;
+            raw=raw.map(item=> {
+                return {
+                    stat:item.stat.name,
+                    value:item.base_stat
+                }
+            })
+            setstats(raw);
+        })
+    },[details])
     return ( 
         <Modal
-        title="Vertically centered modal dialog"
+        title={details.name}
         centered
-        open={modal2Open}
-        onOk={() => setModal2Open(false)}
-        onCancel={() => setModal2Open(false)}
+        open={modalopen}
+        onOk={() => setmodalopen(false)}
+        onCancel={() => setmodalopen(false)}
       >
-        <p>some contents...</p>
-        <p>some contents...</p>
-        <p>some contents...</p>
+        {
+            stats.map(stat=>(
+                <p>{stat.stat}..{stat.value}</p>
+            ))
+        }
+        
       </Modal>
      );
 }
