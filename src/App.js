@@ -28,7 +28,7 @@ function App() {
     <>
     <div style={{display:'flex'}}>
      <SearchBar  setpokemons={setpokemons} search={search}/>
-     <Filter alltypes={alltypes} setpokemons={setpokemons} search={search}/>
+     <Filter alltypes={alltypes} setpokemons={setpokemons} />
     </div>
     <div>
     <div style={{ marginTop: '30px' }}>

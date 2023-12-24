@@ -4,7 +4,7 @@ import { useState } from "react";
 const Filter = (props) => {
     const [filtertype,setfiltertype]=useState('Select Type..');
     const items=[];
-    const {alltypes,setpokemons,search}=props;
+    const {alltypes,setpokemons}=props;
     alltypes.forEach(type => {
         items.push({
             key:type.name,
