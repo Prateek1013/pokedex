@@ -1,19 +1,22 @@
 import { Modal } from "antd";
+import Score from "./Score";
 import { useEffect, useState } from "react";
 const Details = (props) => {
     const {modalopen,setmodalopen,details}=props;
     const [stats,setstats]=useState([]);
+    const [maxval,setmaxval]=useState(0);
     useEffect(()=>{
         fetch(`${details.url}`).then(res=>res.json())
         .then(jsondata=>{
-            var raw=jsondata.stats;
-            raw=raw.map(item=> {
+            var val=0;
+            setstats(jsondata.stats.map(item=> {
+                val=Math.max(item.base_stat,val);
                 return {
                     stat:item.stat.name,
                     value:item.base_stat
                 }
-            })
-            setstats(raw);
+            }))
+            setmaxval(val);
         })
     },[details])
     return ( 
@@ -26,7 +29,7 @@ const Details = (props) => {
       >
         {
             stats.map(stat=>(
-                <p>{stat.stat}..{stat.value}</p>
+                <Score total={maxval} completed={stat.value} name={stat.stat}/>
             ))
         }
         
