@@ -14,7 +14,7 @@ function App() {
   const [details, setdetails] = useState({});
   useEffect(() => {
     const func = () => {
-      fetch('https://pokeapi.co/api/v2/pokemon?limit=1305&offset=0').then(resp => resp.json())
+      fetch('https://pokeapi.co/api/v2/pokemon?limit=700&offset=0').then(resp => resp.json())
         .then(jsondata => {
           setpokemons(jsondata.results);
           setsearch(jsondata.results);

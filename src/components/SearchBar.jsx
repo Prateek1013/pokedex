@@ -2,7 +2,7 @@ const SearchBar = (props) => {
     const {setpokemons,search}=props;
     return ( 
         <div>
-            <input placeholder="type of pokemon.." onChange={(e)=>{
+            <input placeholder="name of pokemon.." onChange={(e)=>{
                 if(e.target.value) {
                     setpokemons(search.filter(item=>item.name.toLowerCase().includes(e.target.value)))
                 }

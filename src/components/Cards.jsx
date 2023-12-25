@@ -33,10 +33,10 @@ const Cards = (props) => {
                 }}
             >
                 <h3>{name}</h3>
-                {types.map(item => (
+                { types.length>0 ? (types.map(item => (
                     <p>{item.type.name}</p>
 
-                ))}
+                ))): <p>Loading..</p> }
 
             </Card>
         </div>
